@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searchable Hyperlinked Segments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9; /* Light background for contrast */
+        }
+        header {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            padding: 20px; /* Spacing inside the header */
+            text-align: center; /* Center-align text */
+            font-size: 36px; /* Large font size for header */
+            font-weight: bold;
+            position: relative; /* For positioning the line */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+        header::after {
+            content: ""; /* Creates the line */
+            display: block;
+            width: 100%;
+            height: 4px; /* Thickness of the line */
+            background-color: #0056b3; /* Darker blue for the line */
+            position: absolute;
+            bottom: 0; /* Positions the line at the bottom of the header */
+            left: 0;
+            border-bottom-left-radius: 8px; /* Match header rounding */
+            border-bottom-right-radius: 8px; /* Match header rounding */
+        }
+        #subHeader {
+            font-size: 18px;
+            color: white; /* Matches header text color */
+            margin-top: 10px; /* Space between the main title and the subheader */
+        }
+        #searchBar {
+            margin: 20px 0;
+            padding: 8px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+        }
+        .segment {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            background-color: white;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+        }
+        .segment a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .segment a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="pageHeader">
+        P.B.A.L
+        <div id="subHeader">Papel ng mga Baconahista, mga Aralin at Literatura</div>
+    </header>
+
+    <input type="text" id="searchBar" placeholder="Search Papers..." oninput="searchSegments()" />
+
+    <div id="segmentsContainer">
+        <div class="segment">
+            <a href="page1.html" target="_blank">KARANASAN NG ISANG BATANG INA: ISANG PANANALIKSIK</a>
+        </div>
+        <div class="segment">
+            <a href="page2.html" target="_blank">EPEKTO NG TEKNOLOHIYA SA PATULOY NA PAGHUBOG SA UGALI/PERSONALIDAD NG MGA KABATAAN MULA SA SENIOR HAYSKUL NGIMMACULATE CONCEPTION ACEDEMY, DASMAÑAS</a>
+        </div>
+        <div class="segment">
+            <a href="page3.html" target="_blank">Ang Epekto ng Pandemya sa Kalusugang
+              Pangkaisipan ng mga Mag-aaral sa Senior
+              High School sa Isang Pribadong Unibersidad
+              sa Lungsod ng Maynila
+              </a>
+        </div>
+        <div class="segment">
+            <a href="page4.html" target="_blank"> Epekto ng Pakikipagrelasyon na Nagdudulot ng Kawalan ng Interes sa Pag-aaral 
+              ng Senior High sa Western Bicutan National High School</a>
+        </div>
+        <div class="segment">
+          <a href="page5.html" target="_blank">ISANG PANANALIKSIK UKOL SA EPEKTO NG PAGKA HUMALING 
+            NG MGA ESTUDYANTE SA INTERNET AT SA PAGLALARO 
+            NG MGA COMPUTER GAMES NG MGA MAG-AARAL 
+            SA UNANG TAON NG KOLEHIYO NG 
+            ST. MARY'S COLLEGE INC.</a>
+      </div>
+    </div>
+
+    <script>
+        // Function to filter and show only matching segments
+        function searchSegments() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            const segments = document.querySelectorAll('.segment');
+
+            segments.forEach(segment => {
+                const text = segment.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    segment.classList.remove('hidden');
+                } else {
+                    segment.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
